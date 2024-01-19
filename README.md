@@ -1,1 +1,1 @@
-# study_xzt.github.io
+# study_xzt
