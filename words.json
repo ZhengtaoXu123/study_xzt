@@ -1,0 +1,242 @@
+{
+    "words":{
+        "Set-5": ["Cloak", "Buffalo", "Ship", "Model", "Jet",
+                  "Ring", "Spell", "Tokyo", "Spring", "Hotel",
+                  "Czech", "Ham", "Brush", "Dog", "War",
+                  "Broad", "Bar", "Spider", "Foot", "Snow",
+                  "India", "Trip", "Aztec", "Draft", "Chocolate"],
+        "Set-4": ["Water", "Mug", "Bat", "Helmet", "Ivory",
+                  "Cap", "Dog", "Ring", "Draft", "Switch",
+                  "Slip", "Calf", "Crane", "Belt", "Spot",
+                  "Shakespeare", "Mexico", "Life", "Field", "Palm",
+                  "Watch", "Buck", "Tie", "Wind", "Vacuum"],
+        "Set-3": ["Mirror", "Dragon", "Shadow", "Castle", "Wave",
+                  "Rocket", "Forest", "Whisper", "Clock", "Ghost",
+                  "Pyramid", "Ocean", "Torch", "Eagle", "Bridge",
+                  "Lightning", "Diamond", "Crown", "Sword", "Fire",
+                  "Maze", "Knight", "Speed", "Ice", "Star"],
+        "Set-2": ["Comet", "Piano", "Nurse", "Hammer", "Glasses",
+                  "Book", "Square", "Penguin", "Beach", "Robot",
+                  "Marble", "Soldier", "Jungle", "Battery", "Bottle",
+                  "Laser", "Honey", "Mount", "Film", "Lemon",
+                  "Parade", "Candle", "Frost", "Shark", "Lock"],
+        "Set-1": ["Kid", "Oil", "Link", "Game", "Chest",
+                  "Rome", "King", "Air", "Mammoth", "Forest",
+                  "Diamond", "Drill", "Back", "Trunk", "Mount",
+                  "Van", "School", "Part", "Tower", "Shark",
+                  "Wall", "Angel", "Phoenix", "Sock", "Washington"],
+        "Set1": ["Apple", "Mountain", "Chair", "Stream", "Festival",
+                 "Carrot", "Thunder", "Statue", "Balloon", "Circuit",
+                 "Teacher", "Tiger", "Poem", "Sail", "Microscope",
+                 "Pyramid", "Opera", "Candle", "Sword", "Rainbow",
+                 "Library", "Pilot", "Stethoscope", "Eclipse", "Puzzle"],
+        "Set2": ["Satellite", "Cheese", "Dragon", "Guitar", "School",
+                 "Volcano", "Pirate", "Glass", "Magnet", "Moon",
+                 "Spider", "Jacket", "Gold", "Kite", "Dance",
+                 "Shadow", "Witch", "Iceberg", "Tower", "Berry",
+                 "Whale", "Train", "Ninja", "Ring", "Dinosaur"],
+        "Set3": ["River", "Sculpture", "Galaxy", "Lighthouse", "King",
+                 "Thunder", "Bicycle", "Clover", "Shadow", "Skyscraper",
+                 "Knight", "Lemon", "Museum", "Piano", "Fairy",
+                 "Robot", "Eagle", "Storm", "Dress", "Pumpkin",
+                 "Doctor", "Key", "Submarine", "Butter", "Festival"],
+        "Set4": ["Whale", "Crown", "Ship", "Forest", "Judge",
+                 "Strawberry", "Church", "Mouse", "Glove", "Sword",
+                 "Cell", "Angel", "Grass", "Snowman", "Thread",
+                 "Olive", "Rocket", "Stamp", "Cherry", "Bridge",
+                 "School", "Flute", "Mirror", "Knight", "Flood"],
+        "Set5": ["Compass", "Dolphin", "Library", "Ghost", "Stadium",
+                 "Pepper", "Castle", "Finger", "Moon", "Vampire",
+                 "Charge", "Torch", "Brush", "Ballet", "Belt",
+                 "Chalk", "Kangaroo", "Pyramid", "Rain", "Witch",
+                 "Rabbit", "Pirate", "Rocket", "Lion", "Nurse"],
+        "Set6": ["Balloon", "Shadow", "Satellite", "Pirate", "Butterfly",
+                 "Church", "Dwarf", "Candle", "Spoon", "Diamond",
+                 "Tiger", "Bridge", "Mouse", "Rocket", "Jacket",
+                 "Doctor", "Train", "Igloo", "Angel", "Viking",
+                 "Robot", "Hammer", "Telescope", "Ocean", "Mummy"],
+        "Set7": ["Apple", "Flag", "Ninja", "Book", "Sword",
+                 "Ring", "Chocolate", "Mountain", "Heart", "Guitar",
+                 "Elephant", "Dentist", "Battery", "Ghost", "Tornado",
+                 "Lamp", "School", "Penguin", "Bee", "Vampire",
+                 "Mirror", "Pyramid", "Wave", "Car", "Lighthouse"],
+        "Set8": ["Zipper", "Ant", "Bubble", "Cup", "Drum",
+                 "Eye", "Feather", "Glove", "Heart", "Island",
+                 "Jacket", "Kettle", "Lion", "Mouse", "Nest",
+                 "Orange", "Piano", "Queen", "Ring", "Shell",
+                 "Tiger", "Umbrella", "Violet", "Wheel", "Xylophone"],
+        "Set9": ["Anchor", "Butterfly", "Car", "Desert", "Elephant",
+                 "Firework", "Guitar", "Helmet", "Ink", "Joker",
+                 "Key", "Lamp", "Mountain", "Needle", "Owl",
+                 "Pepper", "Quartz", "Rabbit", "Sunflower", "Train",
+                 "Universe", "Vampire", "Wizard", "Yogurt", "Zeppelin"],
+        "Set10": ["Arrow", "Bread", "Comet", "Dolphin", "Eclipse",
+                  "Feather", "Grapes", "Harp", "Island", "Jewel",
+                  "Kite", "Lemon", "Microscope", "Nest", "Oxygen",
+                  "Parrot", "Queen", "Raincoat", "Snake", "Teapot",
+                  "Unicorn", "Volcano", "Window", "Yarn", "Zoo"],
+        "Set11": ["Beach", "Clock", "Dancer", "Eagle", "Fountain",
+                  "Guitar", "Honey", "Insect", "Jungle", "Kite",
+                  "Lantern", "Mountain", "Notebook", "Olive", "Pirate",
+                  "Quill", "Robot", "Sculpture", "Telescope", "Umbrella",
+                  "Viking", "Waterfall", "Xylophone", "Yacht", "Zebra"],
+        "Set12": ["Canyon", "Compass", "Engineer", "Flower", "Glacier",
+                  "Harbor", "Island", "Journal", "Key", "Lizard",
+                  "Meteor", "Nectar", "Orchestra", "Puzzle", "Quartz",
+                  "Radar", "Statue", "Television", "Unicorn", "Volcano",
+                  "Wizard", "Xenon", "Yellow", "Zeppelin", "Aquarium"],
+        "Set13": ["Anchor", "Butter", "Crystal", "Dolphin", "Elevator",
+                  "Festival", "Grapes", "Horoscope", "Ink", "Jazz",
+                  "Kangaroo", "Lantern", "Microphone", "Nest", "Orbit",
+                  "Penguin", "Quilt", "Rainforest", "Sun", "Trophy",
+                  "Universe", "Vineyard", "Cat", "Xylophone", "Yoga"],
+        "Set14": ["Badge", "Cherry", "Duck", "Envelope", "Fountain",
+                  "Goblin", "Hedgehog", "Ivy", "Jumper", "Kettle",
+                  "Lightbulb", "Magnet", "Necklace", "Oyster", "Puzzle",
+                  "Queen", "Rocket", "Sphinx", "Tunnel", "Ukulele",
+                  "Vampire", "Windmill", "X-ray", "Yarn", "Zodiac"],
+        "Set15": ["Bicycle", "Coffee", "Dragon", "Elf", "Flag",
+                  "Guitar", "Hammer", "Ice", "Jellyfish", "Koala",
+                  "Lemonade", "Mirror", "Noodle", "Octopus", "Peacock",
+                  "Quicksand", "Rose", "Sparrow", "Tea", "Unicorn",
+                  "Volcano", "Watch", "Yogurt", "Zebra", "Accordion"]
+    },
+    "clues":{
+        "Set-5": ["Animal", "3"],
+        "Set-4": ["Headwear", "2"],
+        "Set-3": ["Medieval", "4"],
+        "Set-2": ["Music", "1"],
+        "Set-1": ["Capitol", "3"],
+        "Set1": ["Health", "3"],
+        "Set2": ["Flight", "3"],
+        "Set3": ["High", "3"],
+        "Set4": ["Nature", "4"],
+        "Set5": ["Navigate", "3"],
+        "Set6": ["Arctic", "1"],
+        "Set7": ["Light", "2"],
+        "Set8": ["Protection", "2"],
+        "Set9": ["Wildlife", "5"],
+        "Set10": ["Sky", "3"],
+        "Set11": ["Art", "2"],
+        "Set12": ["Exploration", "4"],
+        "Set13": ["Water", "3"],
+        "Set14": ["Jewelry", "2"],
+        "Set15": ["Beverage", "4"]
+    },
+    "AI":{
+        "Set-5":{
+            "Low":["that demonstrate varying degrees of verbalized uncertainty"],
+            "Medium":["\"Spider\" could be a good choice, as it's also an animal, though not everyone might immediately think of it in that category."],
+            "High":["\"Ham\" might be considered, as it's related to an animal (pig), but this is a less direct connection and might be a bit of a stretch."]
+        },
+        "Set-4":{
+            "Low":["\"Cap\" and \"Helmet\" are strong choices. Both items are commonly worn on the head and directly align with the clue 'Headwear'"]
+        },
+        "Set-3":{
+            "Low":[""]
+        },
+        "Set-2":{
+            "Low":[""]
+        },
+        "Set-1":{
+            "Low":[""]
+        },
+        "Set1":{
+            "Low":[" \"Apple\" and \"Carrot\" are strong choices due to their clear association with healthy eating. \"Stethoscope\" is also directly related to health as a medical instrument."],
+            "Medium":["\"Apple\" and \"Carrot\" still make sense as they are part of a healthy diet. \"Stethoscope\" could be a relevant choice too, as it's a symbol of medical health, though it's not as universally representative of health as fruits or vegetables."],
+            "High":["While \"Apple\" and \"Carrot\" are quite straightforward, \"Stethoscope\" might also be connected to the clue 'Health,' particularly if one considers health in a medical context. This choice, however, might not be as immediately obvious as the others."]    
+        },
+        "Set2":{
+            "Low":["\"Dragon\" and \"Kite\" are strong choices. Dragons are often depicted as flying creatures in mythology and fantasy, and kites are flown in the air. \"Satellite\" also fits, as it is something that flies through space."],
+            "Medium":["\"Dragon\" is a good option because of its association with flying in folklore. \"Kite\" makes sense as it's a flying object. \"Satellite\" could be considered as well, as it orbits the Earth, but it might not be the first thing that comes to mind when thinking of flight."],
+            "High":["While \"Dragon\" and \"Kite\" directly relate to the concept of flying, \"Satellite\" might also be a viable choice, given its flight through space. However, this connection might be less obvious than the more literal interpretations of flight."]
+        },
+        "Set3":{
+            "Low":[""],
+            "Medium":[""],
+            "High":[""]
+        },
+        "Set4":{
+            "Low":[""],
+            "Medium":[""],
+            "High":[""]
+        },
+        "Set5":{
+            "Low":[""],
+            "Medium":[""],
+            "High":[""]
+        },
+        "Set6":{
+            "Low":[""],
+            "Medium":[""],
+            "High":[""]
+        },
+        "Set7":{
+            "Low":[""],
+            "Medium":[""],
+            "High":[""]
+        },
+        "Set8":{
+            "Low":[""],
+            "Medium":[""],
+            "High":[""]
+        },
+        "Set9":{
+            "Low":[""],
+            "Medium":[""],
+            "High":[""]
+        },
+        "Set10":{
+            "Low":[""],
+            "Medium":[""],
+            "High":[""]
+        },
+        "Set11":{
+            "Low":[""],
+            "Medium":[""],
+            "High":[""]
+        },
+        "Set12":{
+            "Low":[""],
+            "Medium":[""],
+            "High":[""]
+        },
+        "Set13":{
+            "Low":[""],
+            "Medium":[""],
+            "High":[""]
+        },
+        "Set14":{
+            "Low":[""],
+            "Medium":[""],
+            "High":[""]
+        },
+        "Set15":{
+            "Low":[""],
+            "Medium":[""],
+            "High":[""]
+        }
+    },
+    "answers":{
+        "Set-5": ["Buffalo", "Dog", "Spider"],
+        "Set-4": ["Cap", "Helmet"],
+        "Set-3": ["Castle", "Knight", "Crown", "Sword"],
+        "Set-2": ["Piano"],
+        "Set-1": ["Rome", "Washington", "Phoenix"],
+        "Set1": ["Carrot", "Apple", "Stethoscope"],
+        "Set2": ["Satellite", "Moon", "Kite"],
+        "Set3": ["Lighthouse", "Skyscraper", "Eagle"],
+        "Set4": ["Forest", "Grass", "Olive", "Whale"],
+        "Set5": ["Compass", "Map", "Stadium"],
+        "Set6": ["Igloo"],
+        "Set7": ["Lamp", "Lighthouse"],
+        "Set8": ["Umbrella", "Shell"],
+        "Set9": ["Butterfly", "Elephant", "Owl", "Rabbit", "Sunflower"],
+        "Set10": ["Comet", "Eclipse", "Kite"],
+        "Set11": ["Sculpture", "Dancer"],
+        "Set12": ["Canyon", "Compass", "Island", "Volcano"],
+        "Set13": ["Dolphin", "Rainforest", "Ink"],
+        "Set14": ["Necklace", "Queen"],
+        "Set15": ["Coffee", "Lemonade", "Tea", "Yogurt"]
+    }
+}

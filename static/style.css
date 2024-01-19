@@ -1,0 +1,402 @@
+/* 基本页面样式 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.intro-section {
+    padding: 20px;
+    margin: auto;
+    max-width: 800px;
+}
+
+.intro-section h2 {
+    text-align: center; /* 设置标题居中 */
+    font-size: xx-large;
+}
+
+.intro-section h3 {
+    text-align: center; /* 设置标题居中 */
+    font-size: x-large;
+}
+
+.intro-section p, .intro-section ol {
+    text-align: left; /* 设置段落和列表左对齐 */
+    font-size: large;
+    line-height: 1.6; /* 设置行间距，1.6 是行高与字体大小的比例 */
+}
+
+.image-container {
+    text-align: center; /* Center-align the image */
+    margin: 0px 0px; /* Add some space above and below the image */
+}
+
+.centered-image {
+    width: 100%; /* Set the width of the image to 80% of its container */
+    max-width: 800px; /* Optional: you can set a max-width if needed */
+    height: auto; /* Keep the image aspect ratio */
+}
+
+.start-btn {
+    display: block;
+    width: 150px;
+    margin: 50px auto;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.game-rules-section {
+    width: 100%; /* 占满整个容器宽度 */
+    margin: auto; /* 自动外边距实现水平居中 */
+    padding: 20px; /* 内边距 */
+    text-align: center; /* 文本居中，影响标题 */
+}
+
+.game-rules-section h2 {
+    text-align: center; /* 设置标题居中 */
+    font-size: xx-large;
+}
+
+.video-container {
+    width: 60%; /* 视频容器宽度为80% */
+    margin: 0 auto; /* 上下外边距为0，左右外边距自动，实现居中 */
+}
+
+video#gameRulesVideo {
+    width: 100%; /* 视频宽度占满视频容器宽度 */
+    height: auto; /* 高度自动 */
+}
+
+.next-btn {
+    display: block;
+    width: 150px;
+    margin: 50px auto;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    /* 其他按钮样式 */
+}
+
+.rules-quiz-section {
+    /* Your styles for layout, fonts, colors, etc. */
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.question-container {
+    margin-bottom: 20px;
+    text-align: left;
+    padding-left: 400px;
+}
+
+.question-title {
+    margin-bottom: 10px;
+    font-weight: bolder;
+    
+}
+
+.options-container {
+    /* Adjust padding to match the question title padding if any */
+    padding-left: 0; /* Set to 0 or adjust if needed */
+}
+
+.option {
+    display: block;
+    margin-bottom: 10px;
+    /* If you have padding in question-title, set the same value here to match */
+    padding-right: 0; /* Adjust to align with the question title text */
+    margin-left: 0;
+}
+
+.feedback-text {
+    color: red;
+    margin-top: 20px;
+}
+
+.submit-quiz-btn {
+    /* Your button styles */
+    display: block;
+    width: 150px;
+    margin: 50px auto;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+.main-content {
+    /* 游戏标题样式 */
+    .h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    .first-round-selections {
+        display: flex; /* Use Flexbox */
+        align-items: center; /* Vertically center items */
+        justify-content: center; /* Horizontally center items */
+        margin: 20px 0; /* Add some margin for spacing */
+        flex-wrap: wrap; /* Wrap items to next line on smaller screens */
+    }
+    
+    .selected-words-list {
+        margin-left: 10px; /* Space between heading and list */
+        font-weight: bold; /* Optional: make text bold */
+    }
+
+    .timer-container {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .game-container {
+        position: relative; /* 设置为相对定位 */
+        display: flex; /* 使用Flex布局 */
+        justify-content: center; /* 水平居中 */
+        align-items: start; /* 顶部对齐 */
+        margin: 20px auto; /* 水平居中，自动外边距 */
+    }
+
+    .word-grid-container {
+        display: flex; /* 使用Flex布局 */
+        flex-direction: column; /* 子元素垂直排列 */
+        align-items: center; /* 子元素水平居中 */
+    }
+
+    /* 词汇网格样式 */
+    .word-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr); /* 5列布局 */
+        gap: 20px;
+        max-width: 800px;
+    }
+
+    /* 单个词汇单元格样式 */
+    .word-cell {
+        border: 1px solid #ddd;
+        background-color: #fff;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 4px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .word-cell:hover {
+        background-color: #e9ecef;
+        transform: scale(1.05);
+    }
+
+    /* 响应式调整，适应小屏幕设备 */
+    @media (max-width: 600px) {
+        .word-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    /* 添加选中卡片的样式 */
+    .selected {
+        background-color: #cccccc; /* 灰色背景 */
+    }
+
+    /* 线索框样式 */
+    .clue-container {
+        display: flex; /* 使用Flex布局 */
+        justify-content: space-between; /* 项目之间的间距均匀分布 */
+        align-items: center; /* 垂直居中 */
+        text-align: center;
+        margin: 20px auto;
+        padding: 10px;
+        background-color: #f0f0f0; /* 浅灰色背景 */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        border: 1px solid #ccc;
+        max-width: 400px; /* 调整最大宽度 */
+    }
+
+    .clue, .word-num {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #333;
+        margin: 0; /* 移除外边距 */
+        padding: 0 10px; /* 添加一些内边距 */
+    }
+
+
+    /* 线索和单词数量的标题 */
+    .clue-title, .word-num-title {
+        font-size: 1.2em;
+        color: #4CAF50; /* 标题颜色 */
+        margin-bottom: 5px;
+    }
+
+
+    .submit-btn {
+        border: 1px solid #ddd; /* 与单词格相同的边框 */
+        background-color: #4CAF50; /* 绿色背景 */
+        padding: 10px 20px; /* 适当的填充 */
+        text-align: center; /* 文字居中 */
+        cursor: pointer; /* 鼠标指针变为手形 */
+        border-radius: 4px; /* 圆角 */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 与单词格相同的阴影 */
+        transition: background-color 0.3s, transform 0.3s; /* 过渡效果 */
+        font-size: 16px; /* 字体大小 */
+        display: block; /* 使按钮成为块级元素 */
+        margin: 20px auto; /* 居中并有适当的外边距 */
+        width: fit-content; /* 宽度适应内容 */
+    }
+
+    .submit-btn:hover {
+        background-color: #e9ecef; /* 鼠标悬停时的背景颜色 */
+        transform: scale(1.05); /* 鼠标悬停时轻微放大 */
+    }
+
+    .current-set-container {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .ai-container {
+        flex: 0 0 auto; /* 不伸缩，保持原始大小 */
+        display: flex; /* 使用Flex布局 */
+        flex-direction: column; /* 子元素垂直排列 */
+        align-items: center; /* 子元素水平居中 */
+        width: 300px; /* 设定宽度 */
+        background-color: #f3f3f3;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        margin-left: 20px; /* 在左侧添加一些间隔 */
+    }
+    
+    .chat-box {
+        height: 200px;
+        overflow-y: auto;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+
+    .ai-robot-image {
+        max-height: 100px;
+    }
+
+    
+}
+
+
+.transition-section {
+    padding: 20px;
+    margin: auto;
+    max-width: 800px;
+}
+
+.transition-section h2 {
+    font-size: xx-large;
+    margin-bottom: 20px;
+    text-align: center;
+    /* 其他样式 */
+}
+
+.transition-section p {
+    margin-bottom: 20px;
+    text-align: left; /* 设置段落和列表左对齐 */
+    /* 其他样式 */
+}
+
+.tips-list {
+    text-align: left;
+    /* padding: 0 20px; 适当的内边距 */
+    list-style: inside square; /*方形列表项标记 */
+}
+
+.tips-list li {
+    margin-bottom: 10px; /* 列表项间距 */
+}
+
+/* survey */
+.questionnaire-section {
+    position: fixed; /* Positions the div relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw; /* 100% of the viewport width */
+    height: 100vh; /* 100% of the viewport height */
+    z-index: 100; /* Ensures it's above other content */
+    background-color: white; /* Or any other color or transparent */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.previous-selections-container {
+    position: fixed; /* Fixed position relative to the viewport */
+    top: 50px; /* Distance from the top of the viewport */
+    left: 10px; /* Distance from the left of the viewport */
+    width: 300px; /* Width of the floating container */
+    height: calc(100vh - 200px); /* Full height minus some margin */
+    overflow-y: auto; /* Add scroll if content is too long */
+    background-color: white; /* Background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for better visibility */
+    padding: 15px; /* Padding inside the container */
+    box-sizing: border-box; /* Ensures padding is included in the width */
+    z-index: 1000; /* Make sure it sits above other content */
+}
+
+#qualtrics-survey1 {
+    width: 100%;
+    height: 90%; /* Adjust height as needed */
+    border: none; /* Removes any border around the iframe */
+}
+
+#qualtrics-survey2 {
+    width: 100%;
+    height: 90%; /* Adjust height as needed */
+    border: none; /* Removes any border around the iframe */
+}
+
+#qualtrics-survey3 {
+    width: 100%;
+    height: 90%; /* Adjust height as needed */
+    border: none; /* Removes any border around the iframe */
+}
+
+.continue-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    margin: 20px auto; /* Centers the button */
+}
+
+.continue-btn:hover {
+    background-color: #45a049;
+}

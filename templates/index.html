@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codenames Game</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- 实验介绍指导 -->
+    <div id="introSection" class="intro-section">
+        <h2>User Study for AI-Assisted Decision Making</h2>
+        <p>Welcome to our Codenames AI-Assisted Experiment!</p>
+        <p>In this experiment, you will experience a unique version of the popular board game "Codenames," augmented with AI assistance. Our goal is to explore the role of AI in aiding human decision-making, especially in providing suggestions with different levels of uncertainties.</p>
+        <h3>Experiment Procedure</h3>
+        <p>In this special version of "Codenames," you will play solo with the system. The system acts as the Codemaster, providing clues comprising a word (clue) and a corresponding number of words associated with it. Your task is to guess the right words based on these clues, with the AI acting as a Suggestor.</p>
+        <div class="image-container">
+            <img src="../static/procedure.png" alt="Experiment Flowchart" class="centered-image">
+        </div>
+        <button id="startLearning" class="start-btn">Start Learning</button>
+    </div>
+
+    <!-- 游戏规则介绍界面 -->
+    <div id="gameRulesSection" class="game-rules-section" style="display: none;">
+        <h2>Game Rules Introduction</h2>
+        <div class="video-container">
+            <video id="gameRulesVideo" controls>
+                <source src="../static/rules_video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <button id="endOfVideoButton" class="next-btn">Continue</button>
+    </div>
+
+    <!-- quiz界面 -->
+    <div id="rulesQuizSection" class="rules-quiz-section" style="display: none;">
+        <h1>Game Rules Quiz</h1>
+        <h3>Answer the following questions to test your understanding of the game rules.</h3>
+        
+        <!-- Question 1 -->
+        <div class="question-container">
+            <p class="question-title">How many words must the Word Guesser identify if the given clue is "vehicle, 2"?</p>
+            <div class="options-container">
+                <label class="option"><input type="radio" name="question1" value="A"> 1</label>
+                <label class="option"><input type="radio" name="question1" value="B"> 2</label>
+                <label class="option"><input type="radio" name="question1" value="C"> 3</label>
+            </div>
+        </div>
+    
+        <!-- Question 2 -->
+        <div class="question-container">
+            <p class="question-title">If the clue is "red, 1", which word should you choose as the most relevant?</p>
+            <div class="options-container">
+                <label class="option"><input type="radio" name="question2" value="A"> Cherry</label>
+                <label class="option"><input type="radio" name="question2" value="B"> Ocean</label>
+                <label class="option"><input type="radio" name="question2" value="C"> Grass</label>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-title">How accurate are the AI Advisor's suggestions?</p>
+            <div class="options-container">
+                <label class="option"><input type="radio" name="question3" value="A"> 100% accurate; they should be followed without question.</label>
+                <label class="option"><input type="radio" name="question3" value="B"> Potentially inaccurate; they should be considered but not relied upon completely.</label>
+                <label class="option"><input type="radio" name="question3" value="C"> Always incorrect; they are meant to intentionally mislead the player.</label>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <p class="question-title">If the AI Advisor suggests a word that doesn't seem to fit the clue, what should the player do?</p>
+            <div class="options-container">
+                <label class="option"><input type="radio" name="question4" value="A"> Always follow the AI Advisor's suggestion, since it is part of the game's design.</label>
+                <label class="option"><input type="radio" name="question4" value="B"> Ignore the clue and guess based on their own knowledge.</label>
+                <label class="option"><input type="radio" name="question4" value="C"> Use their own judgment in combination with the AI's suggestion to make the best guess.</label>
+            </div>
+        </div>
+        
+        <!-- Submit button -->
+        <button id="submitQuiz" class="submit-quiz-btn">Submit Answers</button>
+        
+        <!-- Feedback Text -->
+        <p id="quizFeedback" class="feedback-text"></p>
+    </div>
+
+    <!-- 过渡页面 1 -->
+    <div id="transitionSection1" class="transition-section" style="display: none;">
+        <h2>Get Ready for Warm-Up</h2>
+        <p>Great job on completing the rules quiz! You're now ready to proceed to the warm-up round. Use this round to familiarize yourself with the game and AI suggestions.</p>
+        <button id="startWarmup" class="start-btn">Proceed to Warm-Up</button>
+    </div>
+
+    <!-- 热身实验页面 -->
+    <div id="warmupSection" class="main-content" style="display: none;">
+        <div class = 'title'>
+            <h1 style="text-align: center;">Warm-Up Round</h1>
+        </div>
+        <!-- <div class="current-set-container">
+            <h1 id="warmupcurrentSetDisplay"></h1>
+        </div> -->
+
+        <div class="clue-container">
+            <div class="clue">
+                <span class="clue-title">Clue:</span>
+                <span id="warmupclueText">[clue]</span>
+            </div>
+            <div class="word-num">
+                <span class="word-num-title">Word Num:</span>
+                <span id="warmupwordCount">[num]</span>
+            </div>
+        </div>
+        
+        <div id="firstRoundSelections1" class="first-round-selections">
+            <h3>Your first Selections:</h3>
+            <div id="selectedWordsList1" class="selected-words-list"></div>
+        </div>
+
+        <div class="game-container">
+            <div class="word-grid-container">
+                <div id="warmupWordGrid" class="word-grid">
+                    <!-- 词汇将在这里显示 -->
+                </div>
+                <button id="warmupSubmitWords" class="submit-btn">submit</button>
+            </div>
+            
+            <div class="ai-container">
+                <img src="../static/AI_robot.png" alt="AI Robot" class="ai-robot-image">
+                <div id="warmupchatBox" class="chat-box">
+                    <!-- AI提示信息将在这里显示 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 过渡页面 2 -->
+    <div id="transitionSection2" class="transition-section" style="display: none;">
+        <h2>Prepare for the Official Game</h2>
+        <p>Take this moment to relax and clear your mind. The upcoming rounds will challenge your decision-making skills and intuition.</p>
+        <ul class="tips-list">
+            <li><strong>Focus:</strong> Pay close attention to the clues and words. Every detail matters.</li>
+            <li><strong>Strategy:</strong> Develop a strategy for your guesses. Remember, the AI's suggestions are just recommendations, they might not be correct!</li>
+            <li><strong>Pace Yourself:</strong> While there's no time limit, it's important to balance speed with careful consideration.</li>
+            <li><strong>Feedback:</strong> Your input is valuable. Post-round, share your thoughts on the AI's performance and your decision-making process.</li>
+            <li><strong>Bonus Rewards:</strong> In addition to the basic experimental rewards, we offer extra rewards based on the number of correctly answered questions by each participant. Strive for accuracy to maximize your rewards!</li>
+            <li><strong>Enjoy:</strong> Above all, enjoy the game! Your engagement and enjoyment are crucial to this experiment.</li>
+        </ul>
+        <p>When you're ready to dive into the official rounds, press the button below.</p>
+        <button id="startMainExperiment" class="start-btn">Start Game</button>
+    </div>
+
+    <!-- 主实验页面， 最初不可见 -->
+    <div id="mainContent" class="main-content" style="display: none;">
+        <!-- 游戏和其他元素的HTML -->
+        <div class = 'title'>
+            <h1 style="text-align: center;">Official Round</h1>
+        </div>
+    
+        <!-- <div class="current-set-container">
+            <h1 id="currentSetDisplay"></h1>
+        </div> -->
+
+        <div id="timerContainer" class="timer-container">
+            Timer: <span id="mainTime">00:00</span>
+        </div>
+    
+        <div class="clue-container">
+            <div class="clue">
+                <span class="clue-title">Clue:</span>
+                <span id="clueText">[clue]</span>
+            </div>
+            <div class="word-num">
+                <span class="word-num-title">Word Num:</span>
+                <span id="wordCount">[num]</span>
+            </div>
+        </div>
+
+        <div id="firstRoundSelections2" class="first-round-selections">
+            <h3>Your first Selections:</h3>
+            <div id="selectedWordsList2" class="selected-words-list"></div>
+        </div>
+    
+        <div class="game-container">
+            <div class="word-grid-container">
+                <div id="wordGrid" class="word-grid">
+                    <!-- 词汇将在这里显示 -->
+                </div>
+                <button id="submitWords" class="submit-btn">submit</button>
+            </div>
+
+            <div class="ai-container">
+                <img src="../static/AI_robot.png" alt="AI Robot" class="ai-robot-image">
+                <div id="chatBox" class="chat-box">
+                    <!-- AI提示信息将在这里显示 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="questionnaireSection1" class="questionnaire-section" style="display: none;">
+        <div class="previous-selections-container">
+            <h3>Previous Selections</h3>
+            <h4>(first round / second round)</h4>
+            <div id="previousSelections1"></div>
+        </div>
+        <iframe id="qualtrics-survey1" src="https://nus.syd1.qualtrics.com/jfe/form/SV_7Ve2mKi50eXEgom"></iframe>
+        <button id="continueExperiment1" class="continue-btn">Continue</button>
+    </div>
+    <div id="questionnaireSection2" class="questionnaire-section" style="display: none;">
+        <div class="previous-selections-container">
+            <h3>Previous Selections (first round / second round)</h3>
+            <div id="previousSelections2"></div>
+        </div>
+        <iframe id="qualtrics-survey2" src="https://nus.syd1.qualtrics.com/jfe/form/SV_6saO0wMJSDD1wX4"></iframe>
+        <button id="continueExperiment2" class="continue-btn">Continue</button>
+    </div>
+    <div id="questionnaireSection3" class="questionnaire-section" style="display: none;">
+        <div class="previous-selections-container">
+            <h3>Previous Selections (first round / second round)</h3>
+            <div id="previousSelections3"></div>
+        </div>
+        <iframe id="qualtrics-survey3" src="https://nus.syd1.qualtrics.com/jfe/form/SV_07lB648y0fHlq7k"></iframe>
+        <button id="continueExperiment3" class="continue-btn">Continue</button>
+    </div>
+
+    <script>
+        
+        let currentSet = -5; // 假定热身实验从 -5 开始
+        let allSelections = [];
+
+        document.getElementById('startLearning').addEventListener('click', function() {
+            document.getElementById('introSection').style.display = 'none';
+            // document.getElementById('transitionSection').style.display = 'none';
+            document.getElementById('gameRulesSection').style.display = 'block';
+        });
+        
+        // 要求看到75%视频之后才能显示跳过按钮
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('gameRulesVideo');
+            const endOfVideoButton = document.getElementById('endOfVideoButton');
+
+            // Initially hide the button
+            endOfVideoButton.style.display = 'none';
+
+            // Add event listener to the video
+            video.addEventListener('timeupdate', function() {
+                const percentage = (video.currentTime / video.duration) * 100;
+
+                // Check if the video has played 75%
+                if (percentage > 90) {
+                    endOfVideoButton.style.display = 'block'; // Show the button
+                }
+            });
+        });
+
+        document.getElementById('endOfVideoButton').addEventListener('click', function() {                   
+            document.getElementById('gameRulesSection').style.display = 'none';
+            document.getElementById('rulesQuizSection').style.display = 'block';
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('submitQuiz').addEventListener('click', function() {
+                // Get the user's answers
+                const answer1 = document.querySelector('input[name="question1"]:checked').value;
+                const answer2 = document.querySelector('input[name="question2"]:checked').value;
+                const answer3 = document.querySelector('input[name="question3"]:checked').value;
+                const answer4 = document.querySelector('input[name="question4"]:checked').value;
+                // Repeat for other questions...
+
+                // Check the answers
+                let allCorrect = true;
+                if (answer1 !== "B" || answer2 !== "A" || answer3 !== "B" || answer4 !== "C") {
+                    allCorrect = false;
+                }
+
+                // Provide feedback
+                const feedbackText = document.getElementById('quizFeedback');
+                if (allCorrect) {
+                    feedbackText.textContent = "All answers are correct! You may proceed.";
+                    feedbackText.style.color = "green";
+                    // Redirect to warmup section or enable the button/link to proceed
+                    document.getElementById('rulesQuizSection').style.display = 'none';
+                    document.getElementById('transitionSection1').style.display = 'block';
+                    
+                } else {
+                    feedbackText.textContent = "Some answers are incorrect. Please try again.";
+                    feedbackText.style.color = "red";
+                    // Optionally, highlight the incorrect answers or provide more detailed feedback
+                }
+            });
+        });
+
+        document.getElementById('startWarmup').addEventListener('click', function() {
+            document.getElementById('transitionSection1').style.display = 'none';
+            document.getElementById('warmupSection').style.display = 'block';
+            loadWords(currentSet); // 加载第一组热身单词和线索
+        });
+
+        document.getElementById('startMainExperiment').addEventListener('click', function() {
+            document.getElementById('transitionSection2').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+            currentSet = 1; // 正式实验开始时设置为 1
+            loadWords(currentSet); // 加载第一组正式实验的单词和线索
+        });
+
+        let mainInterval;  // 全局变量，用于追踪计时器的状态
+        let mainSeconds = 0;  // 记录计时器秒数
+
+        function startMainTimer() {
+            clearInterval(mainInterval); // 清除之前的计时器（如果有）
+            mainSeconds = 0;
+            mainInterval = setInterval(() => {
+                mainSeconds++;
+                document.getElementById('mainTime').textContent = formatTime(mainSeconds);
+            }, 1000);
+        }
+
+        function formatTime(seconds) {
+            let mins = Math.floor(seconds / 60);
+            let secs = seconds % 60;
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        let firstChoiceMade = false;
+
+        // Show or hide AI hints
+        function showAiHints(show) {
+            const aiContainers = document.querySelectorAll('.ai-container .chat-box');
+            aiContainers.forEach(container => {
+                container.style.display = show ? 'block' : 'none';
+            });
+        }
+
+        function loadWords(setNumber) {
+            
+            if (currentSet > 0) {
+                // document.getElementById('currentSetDisplay').textContent = `Current Set: ${setNumber}`;
+                startMainTimer(); // 只有在正式实验部分才启动计时器
+            }
+
+            showAiHints(false); //一开始不显示hints
+            firstChoiceMade = false;
+
+            fetch(`/get_words/${setNumber}`)
+                .then(response => response.json())
+                .then(words => {0
+                    let wordGridId = currentSet < 0 ? 'warmupWordGrid' : 'wordGrid';
+                    let grid = document.getElementById(wordGridId);
+                    grid.innerHTML = ''; // 清除现有的单词
+                    words.forEach(word => {
+                        let cell = document.createElement('div');
+                        cell.className = 'word-cell';
+                        cell.textContent = word;
+                        cell.onclick = function() {
+                            this.classList.toggle('selected');
+                        };
+                        grid.appendChild(cell);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+
+            loadClues(setNumber); // 同时加载线索和单词数量
+            loadAiHint(setNumber); // 加载AI提示
+        }
+
+        function displayFirstRoundSelections(selectedWords) {
+            let selectedWordsList;
+
+            if (currentSet < 0) {
+                selectedWordsList = document.getElementById('selectedWordsList1');
+            } else {
+                selectedWordsList = document.getElementById('selectedWordsList2');
+            }
+            selectedWordsList.innerHTML = selectedWords.join(', ');
+        }
+
+        function resetWordSelections() {
+            document.querySelectorAll('.word-cell.selected').forEach(cell => {
+                cell.classList.remove('selected');
+            });
+        }
+
+        function loadClues(setNumber) {
+            fetch(`/get_clue/${setNumber}`)
+                .then(response => response.json())
+                .then(clues => {
+                    if(clues.length >= 2) {
+                        let clueTextId = currentSet < 0 ? 'warmupclueText' : 'clueText';
+                        let wordCountId = currentSet < 0 ? 'warmupwordCount' : 'wordCount';
+                        document.getElementById(clueTextId).textContent = clues[0];
+                        document.getElementById(wordCountId).textContent = clues[1];
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function handleSubmit() {
+            let selectedWords = [];
+            document.querySelectorAll('.word-cell.selected').forEach(cell => {
+                selectedWords.push(cell.textContent);
+            });
+            
+            // // Fetch the clue's word count
+            // let wordCountId = currentSet < 0 ? 'warmupwordCount' : 'wordCount';
+            // let requiredWordsCount = parseInt(document.getElementById(wordCountId).textContent, 10);
+
+            // // Check if the selected words match the required count
+            // if (selectedWords.length !== requiredWordsCount) {
+            //     alert(`Please select exactly ${requiredWordsCount} words as per the clue.`);
+            //     return; // Exit the function without submitting
+            // }
+
+            // 发送选中的单词到后端
+            fetch('/submit_selected_words', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ words: selectedWords })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (!firstChoiceMade) {
+                    // Store the first round selections
+                    displayFirstRoundSelections(selectedWords);
+                    allSelections.push({ set: currentSet, firstRound: selectedWords, secondRound: [] });
+
+                    // Reset the selections
+                    resetWordSelections();
+                    // Player makes the first choice
+                    showAiHints(true); // Show AI hints after first choice
+                    firstChoiceMade = true; // Update the flag
+                } else {
+                    let currentSelection = allSelections.find(selection => selection.set === currentSet);
+                    if (currentSelection) {
+                        currentSelection.secondRound = selectedWords;
+                    }
+
+                    currentSet++; // 增加set_number
+                    document.getElementById('selectedWordsList1').innerHTML = '';
+                    document.getElementById('selectedWordsList2').innerHTML = '';
+                    
+                    if (currentSet == 0) {
+                        document.getElementById('warmupSection').style.display = 'none';
+                        document.getElementById('transitionSection2').style.display = 'block';
+                    } else if (currentSet == 6) {
+                        document.getElementById('mainContent').style.display = 'none';
+
+                        // Prepare selections for the first survey section
+                        const selectionsForSection1 = prepareSelectionsForSurveySection(1);
+                        // Populate the selections in the HTML
+                        populatePreviousSelections('previousSelections1', selectionsForSection1);
+                        document.getElementById('questionnaireSection1').style.display = 'block';
+                    } else if (currentSet == 11) {
+                        document.getElementById('mainContent').style.display = 'none';
+
+                        // Prepare selections for the first survey section
+                        const selectionsForSection2 = prepareSelectionsForSurveySection(2);
+                        // Populate the selections in the HTML
+                        populatePreviousSelections('previousSelections2', selectionsForSection2);
+                        document.getElementById('questionnaireSection2').style.display = 'block';
+                    }else if (currentSet == 16) {
+                        document.getElementById('mainContent').style.display = 'none';
+
+                        // Prepare selections for the first survey section
+                        const selectionsForSection3 = prepareSelectionsForSurveySection(3);
+                        // Populate the selections in the HTML
+                        populatePreviousSelections('previousSelections3', selectionsForSection3);
+                        document.getElementById('questionnaireSection3').style.display = 'block';
+                    } else {
+
+                        loadWords(currentSet); // 加载新一组单词和线索
+                    }
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // 为主实验的提交按钮添加事件监听器
+        document.getElementById('submitWords').addEventListener('click', handleSubmit);
+        // 为热身实验的提交按钮添加事件监听器
+        document.getElementById('warmupSubmitWords').addEventListener('click', handleSubmit);
+
+
+        function loadAiHint(setNumber) {
+            fetch(`/get_ai_hint/${setNumber}`)
+                .then(response => response.json())
+                .then(aiHints => {
+                    let chatBoxId = currentSet < 0 ? 'warmupchatBox' : 'chatBox';
+                    const chatBox = document.getElementById(chatBoxId);
+                    chatBox.innerHTML = ''; // 清空当前的提示信息
+                    const highHint = aiHints['Low'];
+                    if (highHint && highHint.length > 0) {
+                        const messageElement = document.createElement('p');
+                        messageElement.textContent = highHint[0];
+                        chatBox.appendChild(messageElement);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        for (let i = 1; i <= 3; i++) {
+            document.getElementById(`continueExperiment${i}`).addEventListener('click', function() {
+                // Hide the questionnaire section
+                document.getElementById(`questionnaireSection${i}`).style.display = 'none';
+
+                // Show the experiment interface
+                document.getElementById('mainContent').style.display = 'block';
+
+                // Continue loading words
+                loadWords(currentSet);
+            });
+        }
+
+        function prepareSelectionsForSurveySection(sectionNumber) {
+            // // Calculate start and end set numbers for the given section
+            // let startSetNumber = (sectionNumber - 1) * 5 + 1; // Sections start from 1, so adding 1
+            // let endSetNumber = sectionNumber * 5;
+
+            // // Filter selections for the given section range
+            // return allSelections.filter(selection => 
+            //     selection.set >= startSetNumber && selection.set <= endSetNumber
+            // );
+            let startIndex = sectionNumber * 5;
+            let endIndex = sectionNumber * 5 + 5;
+            return allSelections.slice(startIndex, endIndex);
+        }
+
+        function populatePreviousSelections(sectionId, selections) {
+            console.log(sectionId)
+            console.log(selections)
+            let selectionsContainer = document.getElementById(sectionId);
+            selectionsContainer.innerHTML = ''; // Clear previous content
+            selections.forEach(selection => {
+                let para = document.createElement('p');
+                para.textContent = `Set ${selection.set}: ${selection.firstRound.join(', ')} / ${selection.secondRound.join(', ')}`;
+                selectionsContainer.appendChild(para);
+            });
+        }
+
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     var qualtricsIframe = document.getElementById('qualtrics-survey');
+
+        //     // Optional: Add any event listeners if needed
+        //     qualtricsIframe.onload = function() {
+        //         console.log('Qualtrics survey loaded');
+        //         // Perform any actions after the iframe has loaded
+        //     };
+        // });
+
+    </script>
+</body>
+</html>
